@@ -4,12 +4,9 @@
              xmlns:local="clr-namespace:WhereYouAt"
              x:Class="WhereYouAt.MainPage">
 
-    <!--<NavigationPage Title="Camera">-->
-    <Grid>
-        <local:Camera/>        
-    </Grid>
-
-
-    <!--</NavigationPage>-->
+    <StackLayout>
+        <Image x:Name="PhotoImage" />
+        <Button x:Name="CameraButton" Text="Take Photo" Grid.Row="1" Clicked="CameraButton_Clicked" />
+    </StackLayout>
 
 </ContentPage>
