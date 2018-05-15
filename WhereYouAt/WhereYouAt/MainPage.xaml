@@ -5,10 +5,8 @@
              x:Class="WhereYouAt.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Image x:Name="PhotoImage" />
+        <Button x:Name="CameraButton" Text="Take Photo" Grid.Row="1" Clicked="CameraButton_Clicked" />
     </StackLayout>
 
 </ContentPage>
