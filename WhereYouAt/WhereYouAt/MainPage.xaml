@@ -4,11 +4,12 @@
              xmlns:local="clr-namespace:WhereYouAt"
              x:Class="WhereYouAt.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+    <!--<NavigationPage Title="Camera">-->
+    <Grid>
+        <local:Camera/>        
+    </Grid>
+
+
+    <!--</NavigationPage>-->
 
 </ContentPage>
