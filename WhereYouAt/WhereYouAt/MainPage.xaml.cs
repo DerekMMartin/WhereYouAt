@@ -12,6 +12,7 @@ namespace WhereYouAt
         public MainPage()
         {
             InitializeComponent();
+            //cc
         }
        
     }
