@@ -9,12 +9,12 @@ namespace WhereYouAt.models
         public User(int Id, string userName)
         {
             id = Id;
-            username = userName;
+            UserName = userName;
         }
         public int id { get; }
-        public string username { get; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
-        public Picture profilepicture { get; set; }
+        public string UserName{ get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int ProfilePictureId { get; set; }
     }
 }
