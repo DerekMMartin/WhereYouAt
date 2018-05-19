@@ -1,15 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:WhereYouAt"
              xmlns:views="clr-namespace:WhereYouAt.views"
+             xmlns:pages="clr-namespace:WhereYouAt.pages"
              x:Class="WhereYouAt.MainPage">
 
-    <ContentPage.Content>
-        <Grid>
-            <views:Camera/>
-        </Grid>
-    </ContentPage.Content>
-    
+    <pages:Camera Title="Camera"/>
+    <pages:Test Title="Test"/>
 
-</ContentPage>
+</TabbedPage>

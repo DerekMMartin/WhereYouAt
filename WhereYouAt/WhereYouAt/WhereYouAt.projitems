@@ -21,19 +21,30 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)models\Picture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)models\User.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)pages\Test.xaml.cs">
+      <DependentUpon>Test.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Program.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)views\Camera.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)pages\Camera.xaml.cs">
       <DependentUpon>Camera.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)views\Camera.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)pages\Camera.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)renders\" />
     <Folder Include="$(MSBuildThisFileDirectory)views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)pages\Test.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -10,9 +10,9 @@ using Plugin.Permissions.Abstractions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace WhereYouAt.views
+namespace WhereYouAt.pages
 {
-	public partial class Camera : ContentView
+	public partial class Camera : ContentPage
 	{
 		public Camera ()
 		{
