@@ -4,9 +4,13 @@
              xmlns:local="clr-namespace:WhereYouAt"
              xmlns:views="clr-namespace:WhereYouAt.views"
              xmlns:pages="clr-namespace:WhereYouAt.pages"
-             x:Class="WhereYouAt.MainPage">
-
+             x:Class="WhereYouAt.MainPage"
+            x:Name="NavigatorTabs">    
+    
+    <pages:Map Title="Map"/>
+    <pages:Profile Title="Profie"/>
+    <pages:Newsfeed Title="Newsfeed"/>
     <pages:Camera Title="Camera"/>
-    <pages:Test Title="Test"/>
+
 
 </TabbedPage>

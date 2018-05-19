@@ -13,8 +13,7 @@ namespace WhereYouAt
         public MainPage()
         {
             InitializeComponent();
-            //cc
-            //var nav = new NavigationPage(new Camera());
+            CurrentPage = Children[2];
         }
        
     }
