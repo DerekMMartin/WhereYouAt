@@ -15,9 +15,11 @@ namespace WhereYouAt
 		public App ()
 		{
 			InitializeComponent();
-            DisplayMetrics s = new DisplayMetrics();
 
-            Height = 2;//(s.HeightPixels / (float)s.Density);
+            DisplayMetrics s = new DisplayMetrics();
+            //Height = Application.Current.MainPage.Height;
+            //Height = 2; (s.HeightPixels / (float)s.Density);
+            //Height = 
             MainPage = new MainPage();
         }
 

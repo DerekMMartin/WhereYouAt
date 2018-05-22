@@ -5,7 +5,9 @@
             xmlns:views="clr-namespace:WhereYouAt.views">
     <ContentPage.Content>
         <ScrollView x:Name="Scroller">
-            <StackLayout>
+            <StackLayout x:Name="StackyBoy">
+                <Label Text="Story"/>
+                <views:Story/>
                 <Label Text="Story"/>
                 <views:Story/>
                 <Label Text="kILL ME BABY"/>

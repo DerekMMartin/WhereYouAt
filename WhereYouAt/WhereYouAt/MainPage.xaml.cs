@@ -10,6 +10,7 @@ namespace WhereYouAt
 {
     public partial class MainPage : TabbedPage
     {
+        //public double MainHeight { get; } = Application.Current.MainPage.Height;
         public MainPage()
         {
             InitializeComponent();

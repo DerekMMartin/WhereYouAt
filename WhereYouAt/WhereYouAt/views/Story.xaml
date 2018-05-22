@@ -1,14 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WhereYouAt.views.Story">
+             x:Class="WhereYouAt.views.Story"
+             xmlns:local="clr-namespace:WhereYouAt">
   
     <ContentView.Content>
         <ScrollView Orientation="Horizontal">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition x:Name="RowDef"/>
+                    <RowDefinition x:Name="RowDef" Height="{Binding Source={x:Static local:App.Height}}"/>
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!--<ColumnDefinition x:Name="ColDef" Width="{Binding Source={x:Static local:App}}"/>-->
+                </Grid.ColumnDefinitions>
                 <StackLayout Grid.Row="0" x:Name="Lay" Orientation="Horizontal"></StackLayout>
             </Grid>
         </ScrollView>
