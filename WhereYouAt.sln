@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhereYouAt.Android", "Where
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WhereYouAt", "WhereYouAt\WhereYouAt\WhereYouAt.shproj", "{D6D51E1C-F756-48B1-BE3A-423B3AD01563}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoConnectionLib", "MongoConnectionLib\MongoConnectionLib.csproj", "{78C521DF-50E2-4202-AECC-7DAECAC9FC55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoTester", "MongoTester\MongoTester.csproj", "{9B79EED3-1DE0-44B4-BB4A-274CCDDA4C28}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		WhereYouAt\WhereYouAt\WhereYouAt.projitems*{135a4968-2df9-485a-a5d2-f996e1a99999}*SharedItemsImports = 4
@@ -23,6 +27,14 @@ Global
 		{135A4968-2DF9-485A-A5D2-F996E1A99999}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{135A4968-2DF9-485A-A5D2-F996E1A99999}.Release|Any CPU.Build.0 = Release|Any CPU
 		{135A4968-2DF9-485A-A5D2-F996E1A99999}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{78C521DF-50E2-4202-AECC-7DAECAC9FC55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C521DF-50E2-4202-AECC-7DAECAC9FC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C521DF-50E2-4202-AECC-7DAECAC9FC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78C521DF-50E2-4202-AECC-7DAECAC9FC55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B79EED3-1DE0-44B4-BB4A-274CCDDA4C28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B79EED3-1DE0-44B4-BB4A-274CCDDA4C28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B79EED3-1DE0-44B4-BB4A-274CCDDA4C28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B79EED3-1DE0-44B4-BB4A-274CCDDA4C28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
