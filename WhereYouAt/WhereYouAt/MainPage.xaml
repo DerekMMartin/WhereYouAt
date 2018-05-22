@@ -5,10 +5,10 @@
              xmlns:views="clr-namespace:WhereYouAt.views"
              xmlns:pages="clr-namespace:WhereYouAt.pages"
              x:Class="WhereYouAt.MainPage"
-            x:Name="NavigatorTabs">    
+             x:Name="NavigatorTabs">    
     
     <pages:Map Title="Map"/>
-    <pages:Profile Title="Profie"/>
+    <pages:Profile Title="Profile"/>
     <pages:Newsfeed Title="Newsfeed"/>
     <pages:Camera Title="Camera"/>
 

@@ -15,6 +15,6 @@ namespace WhereYouAt.pages
 		public Profile ()
 		{
 			InitializeComponent ();
-		}
-	}
+        }
+    }
 }

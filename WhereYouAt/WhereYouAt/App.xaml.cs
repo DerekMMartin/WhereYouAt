@@ -1,4 +1,8 @@
+using Android.Hardware.Display;
+using Android.Util;
+using Android.Views;
 using System;
+using System.Runtime.Remoting.Contexts;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,12 +11,15 @@ namespace WhereYouAt
 {
 	public partial class App : Application
 	{
+        public static double Height { get; set; }
 		public App ()
 		{
 			InitializeComponent();
+            DisplayMetrics s = new DisplayMetrics();
 
-			MainPage = new MainPage();
-		}
+            Height = 2;//(s.HeightPixels / (float)s.Density);
+            MainPage = new MainPage();
+        }
 
 		protected override void OnStart ()
 		{
