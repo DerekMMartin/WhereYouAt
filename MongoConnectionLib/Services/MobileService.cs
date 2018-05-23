@@ -11,7 +11,6 @@ namespace MongoConnectionLib.Services
     public class MobileService
     {
         private readonly MongoConnectionManager connectionManager;
-        //private readonly MongoHelper<Mobile> mobileHelper;
         public MobileService()
         {
             connectionManager = new MongoConnectionManager();
@@ -20,30 +19,37 @@ namespace MongoConnectionLib.Services
         {
             connectionManager.RetriveCollection<DocumentType>().InsertOne(document);
         }
-        //public void Edit(Mobile mob)
-        //{
-        //    mobileHelper.Collection.Update(
-        //        Query.EQ("_id", mob.MobileID),
-        //        Update.Set("Name", mob.Name)
-        //            .Set("Details", mob.Details));
-        //}
+        public void Delete<DocumentType>(ObjectId id)
+        {
+            connectionManager.RetriveCollection<DocumentType>().DeleteOne(Builders<DocumentType>.Filter.Eq("_id", id));
+        }
+        public DocumentType RetrieveOneDocument<DocumentType>(ObjectId id)
+        {
+            return connectionManager.RetriveCollection<DocumentType>().Find(Builders<DocumentType>.Filter.Eq("_id", id)).First();
+        }
+        public List<DocumentType> RetrieveAllDocuments<DocumentType>()
+        {
+            return connectionManager.RetriveCollection<DocumentType>().Find(Builders<DocumentType>.Filter.Empty).ToList();
+        }
+        public void Update<DocumentType>(DocumentType document)
+        {
+            BsonDocument localDocument = document.ToBsonDocument();
 
-        //public void Delete(ObjectId postId)
-        //{
-        //    mobileHelper.Collection.DeleteOne(Query.EQ("_id", postId));
-        //}
+            IMongoCollection<DocumentType> collection = connectionManager.RetriveCollection<DocumentType>();
 
-        //public IList<Mobile> GetMobiles()
-        //{
-        //    return mobileHelper.Collection.FindAll().ToList();
-        //}
+            FilterDefinition<DocumentType> filter = Builders<DocumentType>.Filter.Eq("_id", localDocument["_id"]);
 
-        //public Mobile GetMobile(ObjectId id)
-        //{
-        //    var filter = new FilterDefinitionBuilder<BsonDocument>.Empty();
-        //    var mob = mobileHelper.Collection.Find(filter);
+            UpdateDefinition<DocumentType> update;
+            List<UpdateDefinition<DocumentType>> updateDefinitions = new List<UpdateDefinition<DocumentType>>();
+            UpdateDefinitionBuilder<DocumentType> updateBuilder = Builders<DocumentType>.Update;
 
-        //    return mob;
-        //}
+            List<string> names = localDocument.Names.ToList();
+            for (int bsonNameIndex = 1; bsonNameIndex < names.Count; bsonNameIndex++)
+            {
+                updateDefinitions.Add(updateBuilder.Set(names[bsonNameIndex], localDocument[names[bsonNameIndex]]));
+            }
+            update = updateBuilder.Combine(updateDefinitions);
+            collection.UpdateOne(filter, update);
+        }
     }
 }
