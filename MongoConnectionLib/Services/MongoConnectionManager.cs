@@ -19,7 +19,9 @@ namespace MongoConnectionLib.Services
                 Server = new MongoServerAddress("104.42.172.104")
             });
 
-            using (IAsyncCursor<BsonDocument> cursor = Client.ListDatabases())
+
+            Database = Client.GetDatabase("WhereYouAt");
+            using (IAsyncCursor<BsonDocument> cursor = Database.ListCollections())
             {
                 while (cursor.MoveNext())
                 {
@@ -29,8 +31,6 @@ namespace MongoConnectionLib.Services
                     }
                 }
             }
-
-            Database = Client.GetDatabase("WhereYouAt");
         }
         public IMongoCollection<DocumentType> RetriveCollection<DocumentType>()
         {
