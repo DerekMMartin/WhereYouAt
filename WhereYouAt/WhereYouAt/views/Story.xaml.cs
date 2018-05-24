@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using AndroidSwipeLayout;
-using Android.Util;
-
 
 namespace WhereYouAt.views
 {
@@ -16,13 +13,14 @@ namespace WhereYouAt.views
 	public partial class Story : ContentView
 	{
         public double StoryHeight { get; set; }
-
         static int count = 0;
-		public Story ()
-        { 
+		public Story (Grid gri)
+        {
+            var defs = gri.RowDefinitions;
+            StoryHeight = defs.First().Height.Value;
             InitializeComponent();
-            RowDef.Height = new GridLength(RowDef.Height.Value * 10);
-            //RowDef.Height = new GridLength(((Height * 0.20)));
+
+            RowDef.Height = new GridLength(StoryHeight/20);
             for (int i = 0; i < 10; i++)
             {
                 if (count == 0)

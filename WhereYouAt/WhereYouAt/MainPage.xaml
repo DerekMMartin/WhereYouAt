@@ -12,5 +12,4 @@
     <pages:Newsfeed Title="Newsfeed"/>
     <pages:Camera Title="Camera"/>
 
-
 </TabbedPage>

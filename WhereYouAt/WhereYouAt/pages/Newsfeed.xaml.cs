@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using WhereYouAt.views;
 
 namespace WhereYouAt.pages
 {
@@ -14,7 +15,8 @@ namespace WhereYouAt.pages
 	{
 		public Newsfeed ()
 		{
-			InitializeComponent ();
-		}
+			InitializeComponent();
+            //StackyBoy.Children.Add(new Story(Griddy));
+        }
 	}
 }
