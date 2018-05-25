@@ -13,10 +13,10 @@ namespace WhereYouAt.pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Newsfeed : ContentPage
 	{
-		public Newsfeed ()
-		{
-			InitializeComponent();
-            //StackyBoy.Children.Add(new Story(Griddy));
+        public Newsfeed()
+        {
+            InitializeComponent();
+            StackyBoy.Children.Add(new Story());
         }
 	}
 }

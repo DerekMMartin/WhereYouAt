@@ -11,7 +11,10 @@ namespace WhereYouAt
 {
 	public partial class App : Application
 	{
-		public App ()
+        public static double DisplayScreenWidth { get; set; }
+        public static double DisplayScreenHeight { get; set; }
+        public static double DisplayScaleFactor { get; set; }
+        public App ()
 		{
 			InitializeComponent();
             MainPage = new MainPage();

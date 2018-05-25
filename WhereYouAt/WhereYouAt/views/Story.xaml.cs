@@ -12,16 +12,14 @@ namespace WhereYouAt.views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Story : ContentView
 	{
-        public double StoryHeight { get; set; }
+        //spoofing for test remove when db working
         static int count = 0;
-		public Story (Grid gri)
+		public Story ()
         {
-            var defs = gri.RowDefinitions;
-            StoryHeight = defs.First().Height.Value;
             InitializeComponent();
+            RowDef.Height = new GridLength(App.DisplayScreenHeight / 5);
 
-            RowDef.Height = new GridLength(StoryHeight/20);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
                 if (count == 0)
                     Lay.Children.Add(new Image()
@@ -33,6 +31,9 @@ namespace WhereYouAt.views
 
             }
             count++;
+            if (count > 1)
+                count = 0;
+
         }
     }
 }

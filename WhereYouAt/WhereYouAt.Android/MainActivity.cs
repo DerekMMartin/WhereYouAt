@@ -22,6 +22,9 @@ namespace WhereYouAt.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            App.DisplayScreenWidth = (double)Resources.DisplayMetrics.WidthPixels / (double)Resources.DisplayMetrics.Density;
+            App.DisplayScreenHeight = (double)Resources.DisplayMetrics.HeightPixels / (double)Resources.DisplayMetrics.Density;
+            App.DisplayScaleFactor = (double)Resources.DisplayMetrics.Density;
             LoadApplication(new App());
         }
     }
