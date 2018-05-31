@@ -12,8 +12,6 @@ namespace MongoConnectionLib.Modules
     {
         [BsonId]
         public ObjectId ID { get; set; }
-        [BsonElement("Expires_At")]
-        public DateTime ExpiresAt { get; set; }
         [BsonElement("user")]
         public ObjectId UserId { get; set; }
         [BsonElement("locations")]

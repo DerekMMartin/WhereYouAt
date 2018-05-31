@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Bson;
+using MongoDB.Driver.GridFS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,6 @@ namespace MongoConnectionLib.Services
                 Server = new MongoServerAddress("104.42.172.104")
             });
 
-
             Database = Client.GetDatabase("WhereYouAt");
             using (IAsyncCursor<BsonDocument> cursor = Database.ListCollections())
             {
@@ -27,7 +27,7 @@ namespace MongoConnectionLib.Services
                 {
                     foreach (var doc in cursor.Current)
                     {
-                        Console.WriteLine(doc["name"]); // database name
+                        Console.WriteLine(doc["name"]);
                     }
                 }
             }

@@ -10,9 +10,11 @@ namespace MongoConnectionLib.Modules
 {
     public class ImageLocationData
     {
-        [BsonElement("image_location")]
-        public ObjectId ImageLocation { get; set; }
+        [BsonId]
+        public ObjectId ID { get; set; }
+        [BsonElement("image_document_id")]
+        public ObjectId ImageDocumentId { get; set; }
         [BsonElement("image_id")]
-        public string ImageId { get; set; }
+        public ObjectId ImageId { get; set; }
     }
 }

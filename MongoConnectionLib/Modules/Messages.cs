@@ -12,11 +12,11 @@ namespace MongoConnectionLib.Modules
     {
         [BsonId]
         public ObjectId ID { get; set; }
-        [BsonElement("user")]
+        [BsonElement("user", Order = 1)]
         public ObjectId UserId { get; set; }
-        [BsonElement("texted_messages")]
+        [BsonElement("texted_messages", Order = 2)]
         public List<TextedMessageEmbedded> SentMessages { get; set; }
-        [BsonElement("image_message")]
-        public List<TextedMessageEmbedded> SentImages { get; set; }
+        [BsonElement("image_message", Order = 3)]
+        public List<ImageMessageEmbedded> SentImages { get; set; }
     }
 }

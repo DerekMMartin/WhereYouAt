@@ -10,6 +10,10 @@ namespace MongoConnectionLib.Modules
 {
     public class EmbeddedLocationData
     {
+        [BsonId]
+        public ObjectId ID { get; set; }
+        [BsonElement("Expires_At")]
+        public DateTime ExpiresAt { get; set; }
         [BsonElement("latitude")]
         public double Latitude { get; set; }
         [BsonElement("longitude")]
