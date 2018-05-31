@@ -24,10 +24,7 @@ namespace WhereYouAt.pages
             Task<PermissionStatus>[] statuses = { CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera),
             CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage),
             CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location)};
-            //var CameraStatus = CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
-            //var StorageStatus = CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-            //var LocationStatus= 
-            //Console.WriteLine($"\nCamera: {CameraStatus.Result}\nStorage: {StorageStatus.Result}");
+
             if (statuses[0].Result == PermissionStatus.Granted && statuses[1].Result == PermissionStatus.Granted && statuses[2].Result == PermissionStatus.Granted)
             {
                 var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() { });

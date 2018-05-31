@@ -11,15 +11,12 @@ namespace WhereYouAt
 {
 	public partial class App : Application
 	{
-        public static double Height { get; set; }
-		public App ()
+        public static double DisplayScreenWidth { get; set; }
+        public static double DisplayScreenHeight { get; set; }
+        public static double DisplayScaleFactor { get; set; }
+        public App ()
 		{
 			InitializeComponent();
-
-            DisplayMetrics s = new DisplayMetrics();
-            //Height = Application.Current.MainPage.Height;
-            //Height = 2; (s.HeightPixels / (float)s.Density);
-            //Height = 
             MainPage = new MainPage();
         }
 

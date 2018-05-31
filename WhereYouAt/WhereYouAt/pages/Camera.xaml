@@ -3,11 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WhereYouAt.pages.Camera">
 
-    <Grid>
-        <Image x:Name="PhotoImage" />
-        <StackLayout>
-            <Button x:Name="CameraButton" Text="Take Photo" Grid.Row="1" Clicked="CameraButton_Clicked" />
-            <Label x:Name="LocationLabel">H</Label>
-        </StackLayout>
-    </Grid>
+    <StackLayout>
+        <Button x:Name="CameraButton" Text="Take Photo" Grid.Row="1" Clicked="CameraButton_Clicked" />
+        <Grid>
+            <Image x:Name="PhotoImage" />
+            <StackLayout>
+                <Label x:Name="LocationLabel"></Label>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
 </ContentPage>
