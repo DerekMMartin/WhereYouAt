@@ -10,8 +10,10 @@ namespace MongoConnectionLib.Modules
 {
     public class EmbeddedImageData
     {
-        [BsonElement("image_id")]
-        public string ImageId { get; set; }
+        [BsonId]
+        public ObjectId ID { get; set; }
+        [BsonElement("expires_at")]
+        public DateTime ExpiresAt { get; set; }
         [BsonElement("image")]
         public byte[] Image { get; set; }
         [BsonElement("restrictions")]

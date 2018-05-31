@@ -12,9 +12,9 @@ namespace MongoConnectionLib.Modules
     {
         [BsonId]
         public ObjectId ID { get; set; }
-        [BsonElement("expires_at")]
-        public DateTime ExpiresAt { get; set; }
-        [BsonElement("image")]
-        public EmbeddedImageData Image { get; set; }
+        [BsonElement("user", Order = 1)]
+        public ObjectId UserId { get; set; }
+        [BsonElement("image", Order = 2)]
+        public List<EmbeddedImageData> Image { get; set; }
     }
 }
