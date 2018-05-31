@@ -16,7 +16,8 @@ namespace WhereYouAt.pages
         public Newsfeed()
         {
             InitializeComponent();
-            StackyBoy.Children.Add(new Story());
+            //StackyBoy.Children.Add(new Story());
+            //StackyBoy.Children.Add(new Story());
         }
 	}
 }

@@ -10,6 +10,8 @@ namespace MongoConnectionLib.Modules
 {
     public class ImageMessageEmbedded
     {
+        [BsonId]
+        public ObjectId ID { get; set; }
         [BsonElement("date_sent")]
         public DateTime DateSent { get; set; }
         [BsonElement("image")]

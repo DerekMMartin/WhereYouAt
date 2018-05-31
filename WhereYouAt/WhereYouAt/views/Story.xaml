@@ -5,13 +5,12 @@
              xmlns:local="clr-namespace:WhereYouAt">
   
     <ContentView.Content>
-        <ScrollView Orientation="Horizontal" Padding="10" Margin="10">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition x:Name="RowDef"/>
-                </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" x:Name="Lay" Orientation="Horizontal"/>
-            </Grid>
+        <ScrollView Orientation="Horizontal" Padding="0" Margin="10">
+            <StackLayout x:Name="Lay" Orientation="Horizontal">
+                <Frame x:Name="ProfileFrame" BorderColor="Black" Margin="5, 5, 20, 5">
+                    <Image x:Name="ProfileImage" />
+                </Frame>
+            </StackLayout>
         </ScrollView>
   </ContentView.Content>
 </ContentView>
