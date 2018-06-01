@@ -15,7 +15,7 @@ namespace MongoConnectionLib.Modules
         [BsonElement("date_sent")]
         public DateTime DateSent { get; set; }
         [BsonElement("image")]
-        public ImageLocationData Image { get; set; }
+        public ImageLocationData ImageLocation { get; set; }
         [BsonElement("sender")]
         public ObjectId SenderId { get; set; }
     }

@@ -66,14 +66,57 @@ namespace MongoConnectionLib.Services
         {
             return connectionManager.RetriveCollection<Profile>().Find(Builders<Profile>.Filter.Eq("_id", parentId)).First().ProfileImageList.Where(data => data.ID == childId).First();
         }
+        #region Reads
+        #endregion
+
+        #region Inserts
+        #endregion
+
+        #region Deletes
+        public void DeleteFullDocument<DocumentType>(DocumentType document)
+        {
+            BsonDocument localDocument = document.ToBsonDocument();
+            FilterDefinition<DocumentType> filter = Builders<DocumentType>.Filter.Eq("_id", localDocument["_id"]);
+            connectionManager.RetriveCollection<DocumentType>().DeleteOne(filter);
+        }
+        public void DeleteEmbeddedDocument(Profile parentDocument, ImageLocationData deleteData)
+        {
+            FilterDefinitionBuilder<Profile> filterBuilder = Builders<Profile>.Filter;
+            FilterDefinition<Profile> filter = filterBuilder.And(filterBuilder.Eq("_id", parentDocument.ID), filterBuilder.Eq("profile_stored_images._id", deleteData.ID));
+            UpdateDefinition<Profile> update = Builders<Profile>.Update.PullFilter("ProfileImageList", Builders<ImageLocationData>.Filter.Eq("_id", deleteData.ID));
+            connectionManager.RetriveCollection<Profile>().FindOneAndUpdate(filter, update);
+        }
+        public void DeleteEmbeddedDocument(Messages parentDocument, TextedMessageEmbedded deleteData)
+        {
+            FilterDefinitionBuilder<Messages> filterBuilder = Builders<Messages>.Filter;
+            FilterDefinition<Messages> filter = filterBuilder.And(filterBuilder.Eq("_id", parentDocument.ID), filterBuilder.Eq("texted_messages._id", deleteData.ID));
+            UpdateDefinition<Messages> update = Builders<Messages>.Update.PullFilter("SentMessages", Builders<TextedMessageEmbedded>.Filter.Eq("_id", deleteData.ID));
+            connectionManager.RetriveCollection<Messages>().FindOneAndUpdate(filter, update);
+        }
+        public void DeleteEmbeddedDocument(Messages parentDocument, ImageMessageEmbedded deleteData)
+        {
+            FilterDefinitionBuilder<Messages> filterBuilder = Builders<Messages>.Filter;
+            FilterDefinition<Messages> filter = filterBuilder.And(filterBuilder.Eq("_id", parentDocument.ID), filterBuilder.Eq("image_message._id", deleteData.ID));
+            UpdateDefinition<Messages> update = Builders<Messages>.Update.PullFilter("SentImages", Builders<ImageMessageEmbedded>.Filter.Eq("_id", deleteData.ID));
+            connectionManager.RetriveCollection<Messages>().FindOneAndUpdate(filter, update);
+        }
+        public void DeleteEmbeddedDocument(Images parentDocument, EmbeddedImageData deleteData)
+        {
+            FilterDefinitionBuilder<Images> filterBuilder = Builders<Images>.Filter;
+            FilterDefinition<Images> filter = filterBuilder.And(filterBuilder.Eq("_id", parentDocument.ID), filterBuilder.Eq("image._id", deleteData.ID));
+            UpdateDefinition<Images> update = Builders<Images>.Update.PullFilter("Image", Builders<EmbeddedImageData>.Filter.Eq("_id", deleteData.ID));
+            connectionManager.RetriveCollection<Images>().FindOneAndUpdate(filter, update);
+        }
+        public void DeleteEmbeddedDocument(Locations parentDocument, EmbeddedLocationData deleteData)
+        {
+            FilterDefinitionBuilder<Locations> filterBuilder = Builders<Locations>.Filter;
+            FilterDefinition<Locations> filter = filterBuilder.And(filterBuilder.Eq("_id", parentDocument.ID), filterBuilder.Eq("locations._id", deleteData.ID));
+            UpdateDefinition<Locations> update = Builders<Locations>.Update.PullFilter("LocationData", Builders<EmbeddedLocationData>.Filter.Eq("_id", deleteData.ID));
+            connectionManager.RetriveCollection<Locations>().FindOneAndUpdate(filter, update);
+        }
+        #endregion
 
         #region Updates
-        /// <summary>
-        /// Updates the specific document based on the input documents existing ID, though any document with embedded documentation do not inculde previously included
-        /// embedded documentation update those seprately
-        /// </summary>
-        /// <typeparam name="DocumentType"></typeparam>
-        /// <param name="document"></param>
         public void Update<DocumentType>(DocumentType document)
         {
             BsonDocument localDocument = document.ToBsonDocument();
@@ -95,6 +138,7 @@ namespace MongoConnectionLib.Services
             update = updateBuilder.Combine(updateDefinitions);
             connectionManager.RetriveCollection<DocumentType>().UpdateOne(filter, update);
         }
+
         public void AppendNewDataItem(Profile parentDocument, ImageLocationData newData)
         {
             FilterDefinition<Profile> filter = Builders<Profile>.Filter.Eq("_id", parentDocument.ID);
@@ -119,12 +163,33 @@ namespace MongoConnectionLib.Services
             UpdateDefinition<Images> update = Builders<Images>.Update.Push("image", newData);
             connectionManager.RetriveCollection<Images>().UpdateOne(filter, update);
         }
+        public void AppendNewDataItem(Locations parentDocument, ObjectId locationDataId, ObjectId newData)
+        {
+            FilterDefinitionBuilder<Locations> filterBuilder = Builders<Locations>.Filter;
+            FilterDefinition<Locations> filter = filterBuilder.And(filterBuilder.Eq("_id", parentDocument.ID), filterBuilder.Eq("locations._id", locationDataId));
+            UpdateDefinition<Locations> update = Builders<Locations>.Update.Push("locations", newData);
+            connectionManager.RetriveCollection<Locations>().FindOneAndUpdate(filter, update);
+        }
+        public void AppendNewDataItem(Images parentDocument, ObjectId imageDataId, ObjectId newData)
+        {
+            FilterDefinitionBuilder<Images> filterBuilder = Builders<Images>.Filter;
+            FilterDefinition<Images> filter = filterBuilder.And(filterBuilder.Eq("_id", parentDocument.ID), filterBuilder.Eq("image._id", imageDataId));
+            UpdateDefinition<Images> update = Builders<Images>.Update.Push("image", newData);
+            connectionManager.RetriveCollection<Images>().FindOneAndUpdate(filter, update);
+        }
+        public void AppendNewDataItem(Friends parentDocument, ObjectId newData, string propertyName)
+        {
+            FilterDefinition<Friends> filter = Builders<Friends>.Filter.Eq("_id", parentDocument.ID);
+            UpdateDefinition<Friends> update = Builders<Friends>.Update.Push(propertyName, newData);
+            connectionManager.RetriveCollection<Friends>().FindOneAndUpdate(filter, update);
+        }
         public void AppendNewDataItem(Locations parentDocument, EmbeddedLocationData newData)
         {
             FilterDefinition<Locations> filter = Builders<Locations>.Filter.Eq("_id", parentDocument.ID);
             UpdateDefinition< Locations> update = Builders<Locations>.Update.Push("locations", newData);
             connectionManager.RetriveCollection<Locations>().UpdateOne(filter, update);
         }
+
         public void UpdateOneEmbeddedData(Profile parentDocument, ImageLocationData updatedData)
         {
             FilterDefinitionBuilder<Profile> filterBuilder = Builders<Profile>.Filter;
@@ -159,6 +224,20 @@ namespace MongoConnectionLib.Services
             FilterDefinition<Locations> filter = filterBuilder.And(filterBuilder.Eq("_id", parentDocument.ID), filterBuilder.Eq("locations._id", updatedData.ID));
             UpdateDefinition<Locations> update = Builders<Locations>.Update.Set(document => document.LocationData[-1], updatedData);
             connectionManager.RetriveCollection<Locations>().FindOneAndUpdate(filter, update);
+        }
+        public void UpdateOneEmbeddedData(Locations parentDocument, ObjectId locationDataId, ImageLocationData updateData)
+        {
+            FilterDefinitionBuilder<Locations> filterBuilder = Builders<Locations>.Filter;
+            FilterDefinition<Locations> filter = filterBuilder.And(filterBuilder.Eq("_id", parentDocument.ID), filterBuilder.Eq("locations._id", locationDataId));
+            UpdateDefinition<Locations> update = Builders<Locations>.Update.Set(document => document.LocationData[-1].ImageLocation, updateData);
+            connectionManager.RetriveCollection<Locations>().FindOneAndUpdate(filter, update);
+        }
+        public void UpdateOneEmbeddedData(Messages parentDocument, ObjectId imageMessageId, ImageLocationData updateData)
+        {
+            FilterDefinitionBuilder<Messages> filterBuilder = Builders<Messages>.Filter;
+            FilterDefinition<Messages> filter = filterBuilder.And(filterBuilder.Eq("_id", parentDocument.ID), filterBuilder.Eq("image_message._id", imageMessageId));
+            UpdateDefinition<Messages> update = Builders<Messages>.Update.Set(document => document.SentImages[-1].ImageLocation, updateData);
+            connectionManager.RetriveCollection<Messages>().FindOneAndUpdate(filter, update);
         }
         #endregion
     }

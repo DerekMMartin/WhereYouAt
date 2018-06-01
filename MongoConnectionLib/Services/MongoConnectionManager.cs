@@ -21,6 +21,7 @@ namespace MongoConnectionLib.Services
             });
 
             Database = Client.GetDatabase("WhereYouAt");
+            Database.DropCollection("locations");
             using (IAsyncCursor<BsonDocument> cursor = Database.ListCollections())
             {
                 while (cursor.MoveNext())

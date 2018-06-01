@@ -19,8 +19,8 @@ namespace MongoConnectionLib.Modules
         [BsonElement("longitude")]
         public double Longitude { get; set; }
         [BsonElement("location_image")]
-        public ImageLocationData LocationImage { get; set; }
-        [BsonElement("restrictions")]
-        public List<ObjectId> Restrictions { get; set; }
+        public ImageLocationData ImageLocation { get; set; }
+        [BsonElement("view_restrictions")]
+        public List<ObjectId> ViewRestrictions { get; set; }
     }
 }

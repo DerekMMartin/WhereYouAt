@@ -16,7 +16,7 @@ namespace MongoConnectionLib.Modules
         public DateTime ExpiresAt { get; set; }
         [BsonElement("image")]
         public byte[] Image { get; set; }
-        [BsonElement("restrictions")]
-        public List<ObjectId> Restrictions { get; set; }
+        [BsonElement("view_restrictions")]
+        public List<ObjectId> ViewRestrictions { get; set; }
     }
 }
