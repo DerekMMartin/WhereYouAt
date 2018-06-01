@@ -24,5 +24,6 @@ namespace MongoConnectionLib.Modules
         public ObjectId MessageId { get; set; }
         [BsonElement("image_id")]
         public ObjectId ImageId { get; set; }
+        public ObjectId LocationId { get; set; }
     }
 }

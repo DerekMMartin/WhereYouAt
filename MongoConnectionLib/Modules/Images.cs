@@ -15,6 +15,6 @@ namespace MongoConnectionLib.Modules
         [BsonElement("user", Order = 1)]
         public ObjectId UserId { get; set; }
         [BsonElement("image", Order = 2)]
-        public List<EmbeddedImageData> Image { get; set; }
+        public List<EmbeddedImageData> ImageData { get; set; }
     }
 }
