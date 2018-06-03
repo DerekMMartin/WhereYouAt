@@ -21,7 +21,7 @@ namespace MongoConnectionLib.Services
             });
 
             Database = Client.GetDatabase("WhereYouAt");
-            //Database.DropCollection("locations");
+            Database.DropCollection("locations");
             using (IAsyncCursor<BsonDocument> cursor = Database.ListCollections())
             {
                 while (cursor.MoveNext())
@@ -33,7 +33,7 @@ namespace MongoConnectionLib.Services
                 }
             }
         }
-        public IMongoCollection<DocumentType> RetriveCollection<DocumentType>()
+        public IMongoCollection<DocumentType> RetrieveCollection<DocumentType>()
         {
             return Database.GetCollection<DocumentType>(typeof(DocumentType).Name.ToLower());
         }
