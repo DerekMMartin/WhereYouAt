@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Bson;
+using MongoDB.Driver.GridFS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,20 +20,20 @@ namespace MongoConnectionLib.Services
                 Server = new MongoServerAddress("104.42.172.104")
             });
 
-
             Database = Client.GetDatabase("WhereYouAt");
+            Database.DropCollection("locations");
             using (IAsyncCursor<BsonDocument> cursor = Database.ListCollections())
             {
                 while (cursor.MoveNext())
                 {
                     foreach (var doc in cursor.Current)
                     {
-                        Console.WriteLine(doc["name"]); // database name
+                        Console.WriteLine(doc["name"]);
                     }
                 }
             }
         }
-        public IMongoCollection<DocumentType> RetriveCollection<DocumentType>()
+        public IMongoCollection<DocumentType> RetrieveCollection<DocumentType>()
         {
             return Database.GetCollection<DocumentType>(typeof(DocumentType).Name.ToLower());
         }
