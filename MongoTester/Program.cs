@@ -14,21 +14,31 @@ namespace MongoTester
         static void Main(string[] args)
         {
             MobileService test = new MobileService();
-            Locations location = new Locations();
-            EmbeddedLocationData locationData = new EmbeddedLocationData();
+            EmbeddedLocationData locationData = new EmbeddedLocationData
+            {
+                Latitude = 34.3443d,
+                Longitude = 34.34d,
+                ViewRestrictions = new List<ObjectId> { new ObjectId("5b0f3f7ec1b8aa1b68e1fa17") },
+                ImageLocation = null,
+                ExpiresAt = DateTime.Now
+            };
 
-            locationData.ID = new ObjectId("5b0d9ef5c1b8aa49b8f64fc9");
-            locationData.Latitude = 34.3443d;
-            locationData.Longitude = 3.34d;
-            locationData.Restrictions = new List<ObjectId> { new ObjectId("5b0f3f7ec1b8aa1b68e1fa17") };
-            locationData.LocationImage = null;
-            locationData.ExpiresAt = DateTime.Now;
+            Locations location = new Locations
+            {
+                UserId = ObjectId.GenerateNewId(),
+                LocationData = new List<EmbeddedLocationData> { locationData }
+            };
 
-            location.ID = new ObjectId("5b060d22c1b8aa0a843fabb7");
-            location.UserId = ObjectId.GenerateNewId();
-            location.LocationData = new List<EmbeddedLocationData> { locationData };
+            ImageLocationData imageLocation = new ImageLocationData
+            {
+                ID = ObjectId.GenerateNewId(),
+                ImageDocumentId = ObjectId.GenerateNewId(),
+                ImageId = ObjectId.GenerateNewId()
+            };
 
-            //test.Insert(location);
+            Console.WriteLine(locationData.ID);
+
+            test.Insert(location);
 
             //foreach (ObjectId temp in test.RetrieveAllDocumentIds<Locations>())
             //{
@@ -45,18 +55,24 @@ namespace MongoTester
                 Console.WriteLine($"expires: {data.ExpiresAt}");
                 Console.WriteLine($"latitude: {data.Latitude}");
                 Console.WriteLine($"longitude: {data.Longitude}");
-                Console.WriteLine($"image: {data.LocationImage}");
-                foreach (var restrict in data.Restrictions)
+                Console.WriteLine($"image: {data.ImageLocation}");
+                foreach (var restrict in data.ViewRestrictions)
                 {
                     Console.WriteLine($"restrict: {restrict}");
                 }
             }
 
-            //locationData.ID = new ObjectId("5b0d9ef5c1b8aa49b8f64ff9");
-            //locationData.ExpiresAt = DateTime.Now;
-            //test.Update(location);
-            //test.UpdateOneEmbeddedData(location, locationData);
-            //test.AppendNewDataItem(location, locationData);
+            ////locationData.ID = new ObjectId("5b0d9ef5c1b8aa49b8f64ff9");
+            ////test.DeleteEmbeddedDocument(location, locationData);
+            ////test.DeleteEmbeddedDocument(location, locationData.ID, new ObjectId("5b115bf7c1b8aa2bd483fe70"));
+            ////locationData.ExpiresAt = DateTime.Now;
+            ////test.Update(location);
+            //test.DeleteFullDocument<Locations>(location.ID);
+            ////test.UpdateOneEmbeddedData(location, locationData.ID, imageLocation);
+            ////test.AppendNewDataItem(location, locationData);
+            ////test.AppendNewDataItem(location, locationData.ID, ObjectId.GenerateNewId());
+            ////test.UpdateOneEmbeddedData(location, locationData);
+            ////test.DeleteEmbeddedDocument(location, locationData.ID, imageLocation);
 
             //Console.WriteLine();
             //tempLocation = test.RetrieveOneDocument<Locations>(location.ID);
@@ -69,8 +85,8 @@ namespace MongoTester
             //    Console.WriteLine($"expires: {data.ExpiresAt}");
             //    Console.WriteLine($"latitude: {data.Latitude}");
             //    Console.WriteLine($"longitude: {data.Longitude}");
-            //    Console.WriteLine($"image: {data.LocationImage}");
-            //    foreach (var restrict in data.Restrictions)
+            //    Console.WriteLine($"image: {data.ImageLocation}");
+            //    foreach (var restrict in data.ViewRestrictions)
             //    {
             //        Console.WriteLine($"restrict: {restrict}");
             //    }

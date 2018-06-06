@@ -12,9 +12,50 @@ namespace MongoConnectionLib.Services
     public class MobileService
     {
         private readonly MongoConnectionManager connectionManager;
+        public AuthenVariableClasses AuthenticatedUser { get; private set; }
         public MobileService()
         {
             connectionManager = new MongoConnectionManager();
+
+            AuthenticatedUser = new AuthenVariableClasses
+            {
+                IsAuthenticated = false
+            };
+        }
+        public void Login(string userName, string password)
+        {
+            connectionManager.ChangeConnection(userName, password);
+        }
+        public void CreateUser(string userName, string password)
+        {
+
+        }
+        public void DropOwner(string userName)
+        {
+            DropUser drop = new DropUser
+            {
+                User = userName,
+            };
+
+            connectionManager.RunCommand(drop);
+        }
+        public void CreateOwner(string userName, string password)
+        {
+            Roles role = new Roles
+            {
+                Role = "dbOwner",
+                DB = "WhereYouAt"
+            };
+            CreateUser create = new CreateUser
+            {
+                User = userName,
+                Password = password,
+                Roles = new List<Roles> { role }
+            };
+
+            connectionManager.RunCommand(create);
+
+            connectionManager.ChangeConnection(create.User, create.Password);
         }
         #region Reads
         public List<ObjectId> RetrieveAllDocumentIds<DocumentType>()

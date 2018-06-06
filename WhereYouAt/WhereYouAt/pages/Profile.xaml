@@ -4,14 +4,25 @@
              x:Class="WhereYouAt.pages.Profile">
     <ContentPage.Content>
         <Grid>
-            <!--<Image Aspect="AspectFit" Source="Balls.jpg"/>-->
-            <Image x:Name="Pict"/>
-            <Label Text="s"></Label>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal" Grid.Row="0" BackgroundColor="Gray" >
+                <Label x:Name="profile_toplbl" Text="Profile Name" FontSize="20" Grid.Row="0" Margin="10 10 10 10">
+                </Label>
+                <Button HeightRequest="20" WidthRequest="45" Text="TR" Margin="0 120"></Button>
+                <Button HeightRequest="20" WidthRequest="45" Text="X" TextColor="Red" Margin="0 -120"></Button>
+
+            </StackLayout>
+
+            <Image x:Name="Pict" Grid.Row="1" BackgroundColor="BurlyWood">
+            </Image>
+
+            <Label x:Name="location_datelbl" Grid.Row="2" FontSize="30" HorizontalTextAlignment="Center" IsVisible="True">Location + Date</Label>
+
         </Grid>
-        <!--<StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>-->
+
     </ContentPage.Content>
 </ContentPage>

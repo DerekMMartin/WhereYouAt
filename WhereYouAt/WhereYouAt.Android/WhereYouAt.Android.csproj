@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MongoDB.Bson">
+      <Version>2.6.1</Version>
+    </PackageReference>
     <PackageReference Include="Plugin.CurrentActivity">
       <Version>2.1.0.2</Version>
     </PackageReference>
@@ -128,6 +131,12 @@
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="Resources\drawable\Balls.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MongoConnectionLib\MongoConnectionLib.csproj">
+      <Project>{78C521DF-50E2-4202-AECC-7DAECAC9FC55}</Project>
+      <Name>MongoConnectionLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\WhereYouAt\WhereYouAt.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
