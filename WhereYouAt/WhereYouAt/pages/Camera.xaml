@@ -5,14 +5,14 @@
              x:Class="WhereYouAt.pages.Camera">
 
     <AbsoluteLayout>
-        <Image x:Name="PhotoImage" AbsoluteLayout.LayoutBounds="0,.1,1,1" AbsoluteLayout.LayoutFlags="All">
+        <Image x:Name="PhotoImage" AbsoluteLayout.LayoutBounds="0,.9,1,.9" AbsoluteLayout.LayoutFlags="All">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
             </Image.GestureRecognizers>
         </Image>
         <Button x:Name="CameraButton" Text="Take Photo" Clicked="CameraButton_Clicked" AbsoluteLayout.LayoutBounds="0,0,1,.1" AbsoluteLayout.LayoutFlags="All"/>
-        <Label x:Name="LocationLabel" AbsoluteLayout.LayoutBounds="0,.2,1,.3" AbsoluteLayout.LayoutFlags="All"></Label>
-        <models:EditableLabel x:Name="GestureLabel" IsVisible="False" VerticalOptions="Center" AbsoluteLayout.LayoutBounds="0,.5,1,.1" AbsoluteLayout.LayoutFlags="All"></models:EditableLabel>
-        <Button x:Name="SendButton" AbsoluteLayout.LayoutBounds="1,1,30,30" AbsoluteLayout.LayoutFlags="PositionProportional" Clicked="SendButton_Clicked"></Button>
+        <!--<Label x:Name="LocationLabel" AbsoluteLayout.LayoutBounds="0,.2,1,.3" AbsoluteLayout.LayoutFlags="All"></Label>-->
+        <models:EditableLabel x:Name="GestureLabel" IsVisible="False" AbsoluteLayout.LayoutBounds="0,.5,1,.1" AbsoluteLayout.LayoutFlags="All" TextColor="DeepPink"></models:EditableLabel>
+        <Button x:Name="SendButton" AbsoluteLayout.LayoutBounds="1,1,75,75" AbsoluteLayout.LayoutFlags="PositionProportional" Clicked="SendButton_Clicked" IsVisible="False" Text="Send"></Button>
     </AbsoluteLayout>
 </ContentPage>
