@@ -16,8 +16,28 @@ namespace WhereYouAt.pages
         public Newsfeed()
         {
             InitializeComponent();
-            //StackyBoy.Children.Add(new Story());
-            //StackyBoy.Children.Add(new Story());
+            StackyBoy.Children.Add(new Story(null,this));
+            StackyBoy.Children.Add(new Story(null,this));
         }
+        public void BigImage(Image i)
+        {
+            Image temp = new Image() { Source = i.Source };
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (s, e) => {
+                ClearImage();
+            };
+            temp.GestureRecognizers.Add(tapGestureRecognizer);
+            FullImage.Children.Add(temp);
+            FullImage.IsEnabled = true;
+            FullImage.IsVisible = true;
+        }
+
+        public void ClearImage()
+        {
+            FullImage.IsVisible = false;
+            FullImage.IsEnabled = false;
+            FullImage.Children.Clear();
+        }
+        
 	}
 }

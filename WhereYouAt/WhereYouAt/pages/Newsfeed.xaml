@@ -4,13 +4,11 @@
              x:Class="WhereYouAt.pages.Newsfeed">
     <ContentPage.Content>
         <Grid x:Name="Griddy">
-            <Grid.RowDefinitions>
-                <RowDefinition x:Name="NewsFeedRowDef" Height="Auto"/>
-            </Grid.RowDefinitions>
             <ScrollView x:Name="Scroller">
                 <StackLayout x:Name="StackyBoy">
                 </StackLayout>
             </ScrollView>
+            <Grid x:Name="FullImage" IsEnabled="False" IsVisible="False"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
