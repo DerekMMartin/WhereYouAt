@@ -9,14 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace WhereYouAt.pages
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Profile : ContentPage
-    {
-        public Profile()
-        {
-            InitializeComponent();
-        }
-
-
-    }
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class ImagePage : ContentPage
+	{
+		public ImagePage ()
+		{
+			InitializeComponent ();
+		}
+	}
 }

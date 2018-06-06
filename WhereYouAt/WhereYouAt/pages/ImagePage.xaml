@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WhereYouAt.pages.ImagePage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!--<StackLayout Orientation="Vertical">-->
+
+            <Label x:Name="picBg" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20" Grid.Row="0" BackgroundColor="Gray" HeightRequest="200">
+                    User Profile Information
+                </Label>
+                
+            <Label Grid.Row="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30" BackgroundColor="Brown" HeightRequest="30">USERNAME</Label>
+
+                <Grid x:Name="griddy" BackgroundColor="Bisque" Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" BackgroundColor="Goldenrod" Text="IMG" TextColor="White" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" Margin="15">
+                </Label>
+                <Label Grid.Row="0" Grid.Column="1" BackgroundColor="Goldenrod" Text="IMG" TextColor="White" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" Margin="15">
+                </Label>
+                <Label Grid.Row="0" Grid.Column="2" BackgroundColor="Goldenrod" Text="IMG" TextColor="White" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" Margin="15">
+                </Label>
+
+                <Label Grid.Row="1" Grid.Column="0" BackgroundColor="Goldenrod" Text="IMG" TextColor="White" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" Margin="15">
+                </Label>
+                <Label Grid.Row="1" Grid.Column="1" BackgroundColor="Goldenrod" Text="IMG" TextColor="White" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" Margin="15">
+                </Label>
+                <Label Grid.Row="1" Grid.Column="2" BackgroundColor="Goldenrod" Text="IMG" TextColor="White" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" Margin="15">
+                </Label>
+                <Label Grid.Row="2" Grid.Column="0" BackgroundColor="Goldenrod" Text="IMG" TextColor="White" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" Margin="15">
+                </Label>
+                <Label Grid.Row="2" Grid.Column="1" BackgroundColor="Goldenrod" Text="IMG" TextColor="White" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" Margin="15">
+                </Label>
+                <Label Grid.Row="2" Grid.Column="2" BackgroundColor="Goldenrod" Text="IMG" TextColor="White" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center" Margin="15">
+                </Label>
+            </Grid>
+            <!--</StackLayout>-->
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
