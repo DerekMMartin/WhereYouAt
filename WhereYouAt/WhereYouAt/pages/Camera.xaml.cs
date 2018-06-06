@@ -60,88 +60,88 @@ namespace WhereYouAt.pages
             SendButton.IsVisible = false;
 
             #region
-            MobileService ms = new MobileService();
+            //MobileService ms = new MobileService();
 
-            ObjectId user = ObjectId.GenerateNewId();
-            #region
-            Images i = new Images()
-            {
-                ID = ObjectId.GenerateNewId(),
-                UserId = user,
-                ImageData = new List<EmbeddedImageData>()
-            };
+            //ObjectId user = ObjectId.GenerateNewId();
+            //#region
+            //Images i = new Images()
+            //{
+            //    ID = ObjectId.GenerateNewId(),
+            //    UserId = user,
+            //    ImageData = new List<EmbeddedImageData>()
+            //};
 
-            Locations l = new Locations()
-            {
-                ID = ObjectId.GenerateNewId(),
-                UserId = user,
-                LocationData = new List<EmbeddedLocationData>()
-            };
+            //Locations l = new Locations()
+            //{
+            //    ID = ObjectId.GenerateNewId(),
+            //    UserId = user,
+            //    LocationData = new List<EmbeddedLocationData>()
+            //};
 
-            MongoConnectionLib.Modules.Profile p = new MongoConnectionLib.Modules.Profile()
-            {
-                ID = ObjectId.GenerateNewId(),
-                UserId = user,
-                ProfileName = "User1",
-            };
+            //MongoConnectionLib.Modules.Profile p = new MongoConnectionLib.Modules.Profile()
+            //{
+            //    ID = ObjectId.GenerateNewId(),
+            //    UserId = user,
+            //    ProfileName = "User1",
+            //};
 
-            Users u = new Users()
-            {
-                ID = user,
-                UserName = "User1",
-                Password = "pass",
-                ImageId = i.ID,
-                ProfileId = p.ID,
-                LocationId = l.ID
-            };
-            #endregion
-            #region
-            user = ObjectId.GenerateNewId();
-            Images i2 = new Images()
-            {
-                ID = ObjectId.GenerateNewId(),
-                UserId = user,
-                ImageData = new List<EmbeddedImageData>()
-            };
-            Locations l2 = new Locations()
-            {
-                ID = ObjectId.GenerateNewId(),
-                UserId = user,
-                LocationData = new List<EmbeddedLocationData>()
-            };
-            MongoConnectionLib.Modules.Profile p2 = new MongoConnectionLib.Modules.Profile()
-            {
-                ID = ObjectId.GenerateNewId(),
-                UserId = user,
-                ProfileName = "User2"
-            };
-            Users u2 = new Users()
-            {
-                ID = user,
-                UserName = "User2",
-                Password = "pass",
-                ImageId = i2.ID,
-                ProfileId = p2.ID,
-                LocationId = l2.ID
-            };
-            #endregion
-            Console.WriteLine("inserting");
-            ms.Insert(u);
-            Console.WriteLine("insertefd first");
-            ms.Insert(u2);
-            Console.WriteLine("inserted 2nd");
-            //EmbeddedImageData m = new EmbeddedImageData();
-            //m.ExpiresAt = DateTime.Now.AddDays(7);
-            //m.ID = ObjectId.GenerateNewId();
+            //Users u = new Users()
+            //{
+            //    ID = user,
+            //    UserName = "User1",
+            //    Password = "pass",
+            //    ImageId = i.ID,
+            //    ProfileId = p.ID,
+            //    LocationId = l.ID
+            //};
+            //#endregion
+            //#region
+            //user = ObjectId.GenerateNewId();
+            //Images i2 = new Images()
+            //{
+            //    ID = ObjectId.GenerateNewId(),
+            //    UserId = user,
+            //    ImageData = new List<EmbeddedImageData>()
+            //};
+            //Locations l2 = new Locations()
+            //{
+            //    ID = ObjectId.GenerateNewId(),
+            //    UserId = user,
+            //    LocationData = new List<EmbeddedLocationData>()
+            //};
+            //MongoConnectionLib.Modules.Profile p2 = new MongoConnectionLib.Modules.Profile()
+            //{
+            //    ID = ObjectId.GenerateNewId(),
+            //    UserId = user,
+            //    ProfileName = "User2"
+            //};
+            //Users u2 = new Users()
+            //{
+            //    ID = user,
+            //    UserName = "User2",
+            //    Password = "pass",
+            //    ImageId = i2.ID,
+            //    ProfileId = p2.ID,
+            //    LocationId = l2.ID
+            //};
+            //#endregion
+            //Console.WriteLine("inserting");
+            //ms.Insert(u);
+            //Console.WriteLine("insertefd first");
+            //ms.Insert(u2);
+            //Console.WriteLine("inserted 2nd");
+            ////EmbeddedImageData m = new EmbeddedImageData();
+            ////m.ExpiresAt = DateTime.Now.AddDays(7);
+            ////m.ID = ObjectId.GenerateNewId();
 
-            ////var u = ms.RetrieveOneDocument<Users>(//User ID);
-            //var i = u.imagesid //objectid
-            //var images = ms.RetrieveOneDocument<Images>(i);
-            //ms.AppendNewDataItem(images, m);
-            //Users u = new Users();
+            //////var u = ms.RetrieveOneDocument<Users>(//User ID);
+            ////var i = u.imagesid //objectid
+            ////var images = ms.RetrieveOneDocument<Images>(i);
+            ////ms.AppendNewDataItem(images, m);
+            ////Users u = new Users();
 
-            //ms.Insert<Users>()
-            //ms.RetrieveAllDocumentIds<Users>(); //get all users
+            ////ms.Insert<Users>()
+            ////ms.RetrieveAllDocumentIds<Users>(); //get all users
             #endregion
 
         }
