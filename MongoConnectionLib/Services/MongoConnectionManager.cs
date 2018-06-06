@@ -21,17 +21,17 @@ namespace MongoConnectionLib.Services
             });
 
             Database = Client.GetDatabase("WhereYouAt");
-            Database.DropCollection("locations");
-            using (IAsyncCursor<BsonDocument> cursor = Database.ListCollections())
-            {
-                while (cursor.MoveNext())
-                {
-                    foreach (var doc in cursor.Current)
-                    {
-                        Console.WriteLine(doc["name"]);
-                    }
-                }
-            }
+            //Database.DropCollection("locations");
+            //using (IAsyncCursor<BsonDocument> cursor = Database.ListCollections())
+            //{
+            //    while (cursor.MoveNext())
+            //    {
+            //        foreach (var doc in cursor.Current)
+            //        {
+            //            Console.WriteLine(doc["name"]);
+            //        }
+            //    }
+            //}
         }
         public IMongoCollection<DocumentType> RetrieveCollection<DocumentType>()
         {
